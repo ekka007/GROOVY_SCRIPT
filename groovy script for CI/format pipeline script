@@ -1,0 +1,21 @@
+pipeline {
+  agent any
+  stages {
+    stage('git_scm') { 
+      steps {
+        git credentialsId: 'cebf388c-9026-46fe-b027-f9a61de7cdfc', url: 'https://github.com/ekka007/cab-booking-webapp.git'
+      }
+    }
+    stage('compile') { 
+      steps {
+        sh 'mvn compile'
+      }
+    }
+    stage('test') { 
+      steps {
+        sh 'mvn test'
+        
+      }
+    }
+  }
+}
