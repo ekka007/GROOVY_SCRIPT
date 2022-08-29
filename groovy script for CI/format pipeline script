@@ -14,6 +14,16 @@ pipeline {
     stage('test') { 
       steps {
         sh 'mvn test'
+      }
+    }
+    stage('package') { 
+      steps {
+        sh 'mvn package'  
+      }
+    }
+    stage('deploy to container') { 
+      steps {
+        sh 'tomcat-container'   
         
       }
     }
